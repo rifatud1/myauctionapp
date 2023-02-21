@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "188751546282",
+    "project_id": "sign-up-b3061",
+    "storage_bucket": "sign-up-b3061.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188751546282:android:0defb1d1f28bdbf2640dd3",
+        "android_client_info": {
+          "package_name": "com.rifatud.myauctionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188751546282-knpi82pfqulcmmi2h2a67nm1v81rpgp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rifatud.myauctionapp",
+            "certificate_hash": "6680894f50ac4d8e101b0db1b9073674f3aff63c"
+          }
+        },
+        {
+          "client_id": "188751546282-b9o7ljjtuvc5ue3es3k24octi2cv8rhg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbuJc-rJ786CJfl3Ufnk2qZIEnWiyzteQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188751546282-b9o7ljjtuvc5ue3es3k24octi2cv8rhg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
