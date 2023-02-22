@@ -62,7 +62,7 @@ class Details extends StatelessWidget {
                             children: [
                               Text("\$$bidPrice", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),),
 
-                              ElevatedButton(onPressed: (){}, child: Text("Your Bid Price")),
+                              ElevatedButton(onPressed: (){}, child: const Text("Your Bid Price"), style: ElevatedButton.styleFrom(backgroundColor: Color(0xfff38484))),
                             ],
                           ),
                           SizedBox(height: 8,),

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.signIn,
+      initialRoute: AppRoutes.splash,
       title: 'My Auction App',
     );
   }

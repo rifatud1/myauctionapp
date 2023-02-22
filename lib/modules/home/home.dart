@@ -272,11 +272,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xfff38484),
           title: Text('My Auction App'),
           centerTitle: true,
           automaticallyImplyLeading: false,
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xfff38484),
           onPressed: () => writeData(context),
           child: Icon(
             Icons.add,
