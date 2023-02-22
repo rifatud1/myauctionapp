@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final storage = FirebaseStorage.instance;
 
+  //this method shows a circular indicator when loading
   progressDialog() {
     showDialog(
         context: context,
@@ -37,6 +38,7 @@ class _HomeState extends State<Home> {
         });
   }
 
+  //this method writes the data in the firebase database
   writeData(context) async {
     showDialog(
       context: context,
@@ -79,6 +81,8 @@ class _HomeState extends State<Home> {
                     child: image == null
                         ? Center(
                             child: IconButton(
+                              //on pressing the button it will access the gallery
+                              // of the phone and sets the selected image on image variable
                               onPressed: () async {
                                 image = await _picker.pickImage(
                                     source: ImageSource.gallery);
@@ -152,6 +156,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+  //this method updates data that is already existed on the firebase database
   updateData(context, documentID) async {
     showDialog(
       context: context,
@@ -265,7 +270,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  final Stream<QuerySnapshot> _languageStream =
+  //Stream is used to get the realtime updates on the UI
+  final Stream<QuerySnapshot> _productStream =
       FirebaseFirestore.instance.collection('products').snapshots();
 
   @override
@@ -285,7 +291,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         body: StreamBuilder<QuerySnapshot>(
-          stream: _languageStream,
+          stream: _productStream,
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {

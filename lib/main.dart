@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:myauctionapp/routes/app_pages.dart';
 import 'package:myauctionapp/routes/app_routes.dart';
 
+// Here, I have used Getx for routing
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
