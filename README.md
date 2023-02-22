@@ -1,16 +1,18 @@
 # myauctionapp
 
-A new Flutter project.
+# Challenges
 
-## Getting Started
+It was a fun project, enjoyed it throughout the process, I could not complete the project due to lack of time. I work in a US based company where I did not get any holiday on the 21st February. Yet, I tried to participate. Apart from the time constraint I did not face much difficulty.
 
-This project is a starting point for a Flutter application.
+# Packages Used
+Step 1: 
+firebase_auth, google_sign_in is used for google sign in
+get is used for routing and getmaterial app
 
-A few resources to get you started if this is your first Flutter project:
+Step 2:
+firebase_core, cloud_firestore, firebase_storage is used for firebase database
+image_picker is used to pick images from gallery
+fluttertoast is used to show toast on UI
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Step 5:
+animated_splash_screen is used to build the splash screen of the app
