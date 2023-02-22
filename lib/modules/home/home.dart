@@ -7,6 +7,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:myauctionapp/routes/app_routes.dart';
+
+import '../details/details.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,7 +51,7 @@ class _HomeState extends State<Home> {
                     controller: _nameController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.add_card_rounded,
                       ),
                       hintText: 'product name',
                     ),
@@ -57,18 +60,19 @@ class _HomeState extends State<Home> {
                     controller: _descController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.description_rounded,
                       ),
                       hintText: 'description',
                     ),
                   ),
                   TextField(
+                    keyboardType: TextInputType.numberWithOptions(),
                     controller: _priceController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.price_change_rounded,
                       ),
-                      hintText: 'price',
+                      hintText: 'lowest bid',
                     ),
                   ),
                   Expanded(
@@ -162,7 +166,7 @@ class _HomeState extends State<Home> {
                     controller: _nameController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.add_card_rounded,
                       ),
                       hintText: 'product name',
                     ),
@@ -171,18 +175,19 @@ class _HomeState extends State<Home> {
                     controller: _descController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.description_rounded,
                       ),
                       hintText: 'description',
                     ),
                   ),
                   TextField(
+                    keyboardType: TextInputType.numberWithOptions(),
                     controller: _priceController,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
-                        Icons.title_outlined,
+                        Icons.price_change_rounded,
                       ),
-                      hintText: 'price',
+                      hintText: 'lowest bid',
                     ),
                   ),
                   Expanded(
@@ -295,32 +300,38 @@ class _HomeState extends State<Home> {
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
-                return GridTile(
-                  child: Image.network(
-                    data['icon'],
-                    height: 200,
-                  ),
-                  footer: GridTileBar(
-                    backgroundColor: Colors.black54,
-                    title: Text(data['name']),
-                    subtitle: Text("\$${data['price']}"),
-                    trailing: Row(
-                      children: [
-                        IconButton(
-                            onPressed: ()=>updateData(context, document.id), icon: Icon(Icons.edit)),
-                        IconButton(
-                            onPressed: () {
-                              firestore
-                                  .collection('products')
-                                  .doc(document.id)
-                                  .delete()
-                                  .then((value) => Fluttertoast.showToast(
-                                  msg: 'deleted successfully.'))
-                                  .catchError((error) =>
-                                  Fluttertoast.showToast(msg: error));
-                            },
-                            icon: Icon(Icons.delete)),
-                      ],
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: InkWell(
+                    onTap: () => Get.to(Details(name: data['name'], desc: data['description'], bidPrice: data['price'], photo: data['icon'])),
+                    child: GridTile(
+                      child: Image.network(
+                        data['icon'],
+                        height: 200,
+                      ),
+                      footer: GridTileBar(
+                        backgroundColor: Colors.black54,
+                        title: Text(data['name'], style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
+                        subtitle: Text("\$${data['price']}", style: TextStyle(fontWeight: FontWeight.w600),),
+                        trailing: Row(
+                          children: [
+                            IconButton(
+                                onPressed: ()=>updateData(context, document.id), icon: Icon(Icons.edit), iconSize: 20, padding: EdgeInsets.all(0.0),),
+                            IconButton(
+                                onPressed: () {
+                                  firestore
+                                      .collection('products')
+                                      .doc(document.id)
+                                      .delete()
+                                      .then((value) => Fluttertoast.showToast(
+                                      msg: 'deleted successfully.'))
+                                      .catchError((error) =>
+                                      Fluttertoast.showToast(msg: error));
+                                },
+                                icon: Icon(Icons.delete), iconSize: 20, padding: EdgeInsets.all(0.0),),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 );
@@ -330,50 +341,3 @@ class _HomeState extends State<Home> {
         ));
   }
 }
-
-//Stack(
-//   children: [
-//     Card(
-//       child: Container(
-//         height: 250,
-//         width: double.infinity,
-//         child: Column(
-//           children: [
-//             Image.network(
-//               data['icon'],
-//               height: 200,
-//             ),
-//             Text(
-//               data['name'],
-//               style: TextStyle(fontSize: 40),
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//     Positioned(
-//         right: 0,
-//         child: Container(
-//           color: Colors.grey,
-//           child:
-//            Row(
-//              children: [
-//                IconButton(
-//                    onPressed: ()=>updateData(context, document.id), icon: Icon(Icons.edit)),
-//                IconButton(
-//                    onPressed: () {
-//                      firestore
-//                          .collection('products')
-//                          .doc(document.id)
-//                          .delete()
-//                          .then((value) => Fluttertoast.showToast(
-//                          msg: 'deleted successfully.'))
-//                          .catchError((error) =>
-//                          Fluttertoast.showToast(msg: error));
-//                    },
-//                    icon: Icon(Icons.delete)),
-//              ],
-//            ),
-//          ))
-//    ],
-// );

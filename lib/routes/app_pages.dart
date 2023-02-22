@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:myauctionapp/modules/details/details.dart';
 import 'package:myauctionapp/modules/home/home.dart';
 import 'package:myauctionapp/modules/sign_in/sign_in.dart';
 import 'package:myauctionapp/routes/app_routes.dart';

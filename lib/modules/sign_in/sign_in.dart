@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:get/get.dart';
 import 'package:myauctionapp/modules/home/home.dart';
@@ -31,6 +32,7 @@ class SignIn extends StatelessWidget {
         print(user.email);
         print(user.uid);
         print(user.phoneNumber);
+        Fluttertoast.showToast(msg: "Signed In Successfully");
         Get.toNamed(AppRoutes.home);
 
       }
@@ -50,44 +52,22 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InkWell(
-              onTap: () => signInWithGoogle(context),
-              child: Ink(
-                color: Color(0xFF397AF3),
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Image.asset("assets/google_logo.png", height: 20, width: 20,),
-                      SizedBox(width: 12),
-                      Text('Sign in with Google'),
-                    ],
-                  ),
-                ),
+        child: InkWell(
+          onTap: () => signInWithGoogle(context),
+          child: Ink(
+            color: Color(0xFF397AF3),
+            child: Padding(
+              padding: EdgeInsets.all(6),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Image.asset("assets/google_logo.png", height: 20, width: 20,),
+                  SizedBox(width: 12),
+                  Text('Sign in with Google'),
+                ],
               ),
             ),
-            InkWell(
-              onTap: () => signOut(),
-              child: Ink(
-                color: Color(0xFF397AF3),
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Image.asset("assets/google_logo.png", height: 20, width: 20,),
-                      SizedBox(width: 12),
-                      Text('Log Out'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
